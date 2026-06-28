@@ -6,5 +6,5 @@ C_DEFINES =
 
 C_INCLUDES = -I/home/soo/vhil_project/common -I/home/soo/vhil_project/third_party/freertos/include -I/home/soo/vhil_project/third_party/cmsis_core/CMSIS/Core/Include -I/home/soo/vhil_project/third_party/cmsis_f4/Include -I/home/soo/vhil_project/third_party/freertos/portable/ThirdParty/GCC/Posix
 
-C_FLAGS = -std=gnu99
+C_FLAGS = -fPIC -std=gnu99
 

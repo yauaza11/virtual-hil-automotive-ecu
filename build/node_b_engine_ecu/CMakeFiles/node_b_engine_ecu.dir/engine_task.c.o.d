@@ -22,7 +22,13 @@ node_b_engine_ecu/CMakeFiles/node_b_engine_ecu.dir/engine_task.c.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
- /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+ /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/unistd.h \
+ /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
  /home/soo/vhil_project/third_party/freertos/include/FreeRTOS.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
@@ -44,11 +50,4 @@ node_b_engine_ecu/CMakeFiles/node_b_engine_ecu.dir/engine_task.c.o: \
  /home/soo/vhil_project/third_party/freertos/include/mpu_wrappers.h \
  /home/soo/vhil_project/third_party/freertos/include/task.h \
  /home/soo/vhil_project/third_party/freertos/include/list.h \
- /home/soo/vhil_project/node_b_engine_ecu/../common/protocol.h \
- /home/soo/vhil_project/third_party/cmsis_f4/Include/stm32f412cx.h \
- /home/soo/vhil_project/third_party/cmsis_core/CMSIS/Core/Include/core_cm4.h \
- /home/soo/vhil_project/third_party/cmsis_core/CMSIS/Core/Include/cmsis_version.h \
- /home/soo/vhil_project/third_party/cmsis_core/CMSIS/Core/Include/cmsis_compiler.h \
- /home/soo/vhil_project/third_party/cmsis_core/CMSIS/Core/Include/cmsis_gcc.h \
- /home/soo/vhil_project/third_party/cmsis_core/CMSIS/Core/Include/m-profile/armv7m_mpu.h \
- /home/soo/vhil_project/third_party/cmsis_f4/Include/system_stm32f4xx.h
+ /home/soo/vhil_project/common/protocol.h

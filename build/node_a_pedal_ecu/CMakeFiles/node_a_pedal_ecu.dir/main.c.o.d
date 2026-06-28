@@ -33,4 +33,5 @@ node_a_pedal_ecu/CMakeFiles/node_a_pedal_ecu.dir/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /home/soo/vhil_project/third_party/freertos/include/mpu_wrappers.h \
  /home/soo/vhil_project/third_party/freertos/include/task.h \
- /home/soo/vhil_project/third_party/freertos/include/list.h
+ /home/soo/vhil_project/third_party/freertos/include/list.h \
+ /home/soo/vhil_project/common/protocol.h

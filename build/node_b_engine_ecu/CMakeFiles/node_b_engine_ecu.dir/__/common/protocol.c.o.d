@@ -42,30 +42,8 @@ node_b_engine_ecu/CMakeFiles/node_b_engine_ecu.dir/__/common/protocol.c.o: \
  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
- /home/soo/vhil_project/third_party/freertos/include/FreeRTOS.h \
+ /home/soo/vhil_project/common/protocol.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /home/soo/vhil_project/common/FreeRTOSConfig.h \
- /home/soo/vhil_project/third_party/freertos/include/projdefs.h \
- /home/soo/vhil_project/third_party/freertos/include/portable.h \
- /home/soo/vhil_project/third_party/freertos/include/deprecated_definitions.h \
- /home/soo/vhil_project/third_party/freertos/portable/ThirdParty/GCC/Posix/portmacro.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
- /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
- /usr/include/x86_64-linux-gnu/bits/local_lim.h \
- /usr/include/linux/limits.h \
- /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
- /usr/include/x86_64-linux-gnu/bits/pthread_stack_min.h \
- /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
- /home/soo/vhil_project/third_party/freertos/include/mpu_wrappers.h \
- /home/soo/vhil_project/third_party/cmsis_f4/Include/stm32f412cx.h \
- /home/soo/vhil_project/third_party/cmsis_core/CMSIS/Core/Include/core_cm4.h \
- /home/soo/vhil_project/third_party/cmsis_core/CMSIS/Core/Include/cmsis_version.h \
- /home/soo/vhil_project/third_party/cmsis_core/CMSIS/Core/Include/cmsis_compiler.h \
- /home/soo/vhil_project/third_party/cmsis_core/CMSIS/Core/Include/cmsis_gcc.h \
- /home/soo/vhil_project/third_party/cmsis_core/CMSIS/Core/Include/m-profile/armv7m_mpu.h \
- /home/soo/vhil_project/third_party/cmsis_f4/Include/system_stm32f4xx.h \
- /home/soo/vhil_project/common/protocol.h
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h
