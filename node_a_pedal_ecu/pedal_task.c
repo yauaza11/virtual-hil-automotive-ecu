@@ -3,8 +3,6 @@
 #include "stm32f412cx.h"
 #include "../common/protocol.h"
 
-#define PEDAL_DATA_ID 0x5
-
 void vVehiclePedalTask(void *pvParameters){
     TickType_t xLastWakeTime = xTaskGetTickCount();
     const TickType_t xFrequency = pdMS_TO_TICKS(10);
@@ -26,9 +24,8 @@ void vVehiclePedalTask(void *pvParameters){
         // 음.. 굳이 이렇게 해야하나? 해야하네..
         u8DataBuffer[0] = (PEDAL_DATA_ID<<4) | u8SeqCounter;
         u8DataBuffer[1] = u8VirtualPedal; // MainAps
-        uint8_t u8DataBuffer[2] = u8VirtualPedal; // SubAps
+        u8DataBuffer[2] = u8VirtualPedal; // SubAps
 
-        // 왜 이렇게 하는것일까? 
         uint8_t CRC8Result = u8CalculateAUTOSARCRC8(u8DataBuffer, 3);
 
         CAN1->sTxMailBox[0].TDLR =  (u8DataBuffer[0]<< 0) |
