@@ -1,5 +1,6 @@
 #include "FreeRTOS.h"
 #include "task.h"
+#include "protocol.h"
 // #include "stm32f412cx.h"
 
 // 왜 여기서 호출하지? 그냥 실행시키는 건가?
@@ -9,7 +10,7 @@ void vHardwareInit(void);
 
 int main()
 {
-    vInitVirtualCANBus(1);
+    vInitVirtualCANBus();
     vHardwareInit();
 
     xTaskCreate(vVehiclePedalTask, 

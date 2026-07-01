@@ -3,6 +3,9 @@ project(VirtualHILPlatform C)
 
 set(CMAKE_C_STANDARD 99)
 
+# 💡 [필수 추가] 링커의 relocation 에러 및 워닝을 원천 봉쇄합니다.
+add_compile_options(-fPIC)
+
 # 💡 모든 ECU가 같이 쓸 공용 프로토콜/오픈소스 헤더 경로 주소록 등록
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/common

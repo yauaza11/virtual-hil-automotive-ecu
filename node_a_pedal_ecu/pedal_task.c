@@ -1,44 +1,47 @@
 #include <stdio.h>
+#include <unistd.h>
 #include "FreeRTOS.h"
 #include "task.h"
-#include "../common/protocol.h"
-// #include "stm32f412cx.h"
+#include "protocol.h"
 
-
-void vVehiclePedalTask(void *pvParameters){
-    TickType_t xLastWakeTime = xTaskGetTickCount();
-    const TickType_t xFrequency = pdMS_TO_TICKS(10);
-
-    uint8_t u8DataBuffer[3];
+void vVehiclePedalTask(void *pvParameters)
+{
     setvbuf(stdout, NULL, _IONBF, 0);
+    printf("[NODE A - PEDAL] Pure SIL Mode Active: Transmitting...\n");
 
-    // 🏆 [기동 메시지]
-    printf("🟢 [NODE A - PEDAL] SYSTEM READY: Connected to Virtual CAN Bus.\n");
+    uint8_t u8Sequence = 0;
+    uint8_t u8PedalRaw = 0;
+    uint8_t u8Direction = 1;
 
-    while(1){
-        vTaskDelayUntil(&xLastWakeTime, xFrequency);
+    while (1)
+    {
+        vTaskDelay(pdMS_TO_TICKS(10)); 
+
+        u8Sequence = (u8Sequence + 1) % 16;
         
-        static uint8_t u8SeqCounter = 0;
-        static uint8_t u8VirtualPedal = 0;
-        
-        u8VirtualPedal = (u8VirtualPedal + 1) % 101;
-        u8SeqCounter = (u8SeqCounter + 1) % 16;
+        if (u8Direction) {
+            u8PedalRaw += 5;
+            if (u8PedalRaw >= 100) u8Direction = 0;
+        } else {
+            u8PedalRaw -= 5;
+            if (u8PedalRaw <= 0) u8Direction = 1;
+        }
 
-        u8DataBuffer[0] = (PEDAL_DATA_ID << 4) | u8SeqCounter;
-        u8DataBuffer[1] = u8VirtualPedal; // MainAps
-        u8DataBuffer[2] = u8VirtualPedal; // SubAps
+        uint8_t u8TxBuffer[3];
+        u8TxBuffer[0] = (uint8_t)((PEDAL_DATA_ID << 4) | u8Sequence);
+        u8TxBuffer[1] = u8PedalRaw;
+        u8TxBuffer[2] = (uint8_t)(100 - u8PedalRaw); 
 
-        // 💡 [오타 완벽 패치!] uDataBuffer에서 'u8DataBuffer'로 8자를 정확히 채워 넣었습니다.
-        uint8_t CRC8Result = u8CalculateAUTOSARCRC8(u8DataBuffer, 3);
+        uint8_t u8Crc = u8CalculateAUTOSARCRC8(u8TxBuffer, 3);
 
-        // 🔌 공유 메모리를 통해 데이터 패킹 송신
-        CAN1->sTxMailBox[0].TDLR =  (u8DataBuffer[0] << 0)  |
-                                    (u8DataBuffer[1] << 8)  |
-                                    (u8DataBuffer[2] << 16) |
-                                    (CRC8Result      << 24);
-        CAN1->sTxMailBox[0].TDHR = 0x00000000;
-        CAN1->sTxMailBox[0].TDTR = (4 << 0);
-        CAN1->sTxMailBox[0].TIR = (CAN_ID_PEDAL_DATA << 21); 
-        CAN1->sTxMailBox[0].TIR |= CAN_TI0R_TXRQ;
+        if (pVirtualBus != NULL) {
+            pVirtualBus->node_a_slot = ((uint32_t)u8TxBuffer[0] << 0)  |
+                                       ((uint32_t)u8TxBuffer[1] << 8)  |
+                                       ((uint32_t)u8TxBuffer[2] << 16) |
+                                       ((uint32_t)u8Crc         << 24);
+            
+            printf("-> [PEDAL] Sent Packet - Seq: %d, APS: %d%%\n", u8Sequence, u8PedalRaw);
+            fflush(stdout);
+        }
     }
 }

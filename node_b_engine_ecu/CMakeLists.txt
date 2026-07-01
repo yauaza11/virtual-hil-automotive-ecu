@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
-# (main.c)과 엔진 멀티태스킹 로직(engine_task.c) 묶기
+find_package(Threads REQUIRED)
+
 set(NODE_B_SOURCES
     main.c
     engine_task.c
@@ -13,5 +14,7 @@ set(NODE_B_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/../third_party/freertos/portable/ThirdParty/GCC/Posix/utils/wait_for_event.c
 )
 
-# 엔진 제어기 실행 파일 생성 지시
 add_executable(node_b_engine_ecu ${NODE_B_SOURCES})
+
+# 💡 [CORE LINK FIX] Link the real-time library (rt) and pthread for virtual shared memory
+target_link_libraries(node_b_engine_ecu PRIVATE Threads::Threads rt)
